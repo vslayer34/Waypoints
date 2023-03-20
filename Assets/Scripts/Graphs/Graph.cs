@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Graph
@@ -91,7 +92,7 @@ public class Graph
 
             if (node.GetID() == endId)
             {
-                // ReconstructPath(start, end);
+                ReconstructPath(start, end);
                 return true;
             }
 
@@ -134,4 +135,21 @@ public class Graph
         return false;
 
     }   // CalculateAStar()
+
+    void ReconstructPath(Node startId, Node endId)
+    {
+        pathList.Clear();
+        pathList.Add(endId);
+
+        Node p = endId.cameFrom;
+        while (p != startId || p != null)
+        {
+            pathList.Insert(0, p);
+            p = p.cameFrom;
+        }
+
+        pathList.Insert(0, startId);
+    }   // ReconstructPath()
+
+
 }   // Graph class

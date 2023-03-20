@@ -9,7 +9,6 @@ public class Node
     public Node path;
     GameObject id;
 
-    public float xPosition, yPosition, zPosition;
     public float g, h, f;
 
     public Node cameFrom;
@@ -17,9 +16,6 @@ public class Node
     public Node(GameObject i)
     {
         id = i;
-        xPosition = i.transform.position.x;
-        yPosition = i.transform.position.y;
-        zPosition = i.transform.position.z;
         path = null;
     }
 
